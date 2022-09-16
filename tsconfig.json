@@ -33,7 +33,7 @@
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS",
-      "jsx": "react-jsx"
+      //"jsx": "react-jsx",
     }
-  }
+  },
 }
