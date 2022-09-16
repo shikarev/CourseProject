@@ -16,5 +16,6 @@
   },
   "rules": {
     "strict": ["error", "global"]
-  }
+  },
+  "ignorePatterns": "build/*"
 }
