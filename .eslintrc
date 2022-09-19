@@ -4,7 +4,8 @@
   "env": {
     "es6": true,
     "mocha": true,
-    "node": true
+    "node": true,
+    "browser": true
   },
   "globals": {
     "document": false
@@ -15,7 +16,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "strict": ["error", "global"]
+    "strict": ["error", "global"],
+    "no-unused-vars": "off"
   },
   "ignorePatterns": "build/*"
 }
