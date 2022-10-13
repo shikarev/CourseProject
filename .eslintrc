@@ -17,7 +17,8 @@
   },
   "rules": {
     "strict": ["error", "global"],
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "no-undef": "off"
   },
   "ignorePatterns": "build/*"
 }
