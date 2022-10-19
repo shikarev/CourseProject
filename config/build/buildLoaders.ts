@@ -9,25 +9,46 @@ export function buildLoaders({isDev}: BuildOptions) : webpack.RuleSetRule[] {
     use: ['@svgr/webpack'],
   }
 
+  const babelLoader = {
+    test: /\.(js|jsx|tsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        presets: ['@babel/preset-env'],
+        "plugins": [
+          [
+            "i18next-extract",
+            {
+              locales: ['ru', 'en'],
+              keyAsDefaultValue: true
+            }
+          ],
+        ]
+      }
+    }
+  }
+
   const cssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       {
-        loader: 'css-loader',
+        loader: "css-loader",
         options: {
           modules: {
-            auto: Boolean((resPath: string) => resPath.includes('.module.')),
+            auto: (resPath: string) => Boolean(resPath.includes('.module.')),
             localIdentName: isDev
               ? '[path][name]__[local]--[hash:base64:5]'
               : '[hash:base64:8]'
-          }
+          },
         }
       },
       "sass-loader",
     ],
   }
 
+  // Если не используем тайпскрипт - нужен babel-loader
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
@@ -35,13 +56,13 @@ export function buildLoaders({isDev}: BuildOptions) : webpack.RuleSetRule[] {
   }
 
   const fileLoader = {
-      test: /\.(png|jpe?g|gif)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-        },
-      ],
+    test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+      },
+    ],
   }
 
-  return [typescriptLoader, cssLoader, svgLoader, fileLoader]
+  return [cssLoader, svgLoader, fileLoader, babelLoader, typescriptLoader]
 }
