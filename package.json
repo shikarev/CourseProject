@@ -2,15 +2,17 @@
   "name": "course-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "start": "webpack serve --env port=8000",
     "build:prod": "webpack --env mode=production",
-    "build:dev": "webpack --env mode=development"
+    "build:dev": "webpack --env mode=development",
+    "lint:ts": "eslint \"**/*.{ts, tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts, tsx}\" --fix"
   },
   "license": "MIT",
   "keywords": [],
-  "author": "",
+  "author": "D. Shikarev <dmitryshikarev@gmail.com>",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.1",
@@ -86,5 +88,6 @@
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.7.4"
-  }
+  },
+  "repository": "https://github.com/shikarev/CourseProject.git"
 }
