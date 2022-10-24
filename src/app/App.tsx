@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import './styles/index.scss'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { AppRouter } from 'app/providers/router'
@@ -7,19 +7,19 @@ import { Sidebar } from 'widgets/Sidebar'
 import { useTheme } from 'app/providers/ThemeProvider'
 
 function App() {
-    const { theme } = useTheme()
+  const { theme } = useTheme()
 
-    return (
-        <div className={classNames('app', {}, [theme])}>
-            <Suspense fallback="">
-                <Navbar />
-                <div className="content-page">
-                    <Sidebar />
-                    <AppRouter />
-                </div>
-            </Suspense>
+  return (
+    <div className={classNames('app', {}, [theme])}>
+      <Suspense fallback="">
+        <Navbar />
+        <div className="content-page">
+          <Sidebar />
+          <AppRouter />
         </div>
-    )
+      </Suspense>
+    </div>
+  )
 }
 
 export default App
