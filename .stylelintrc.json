@@ -3,6 +3,8 @@
   "rules": {
     "indentation": [2],
     "selector-class-pattern": null,
-    "no-empty-source": null
+    "no-empty-source": null,
+    "scss/double-slash-comment-whitespace-inside": null,
+    "value-keyword-case": null
   }
 }
